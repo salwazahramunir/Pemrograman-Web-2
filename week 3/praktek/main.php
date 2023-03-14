@@ -19,13 +19,14 @@ if (isset($_POST['submit'])) {
 require_once 'header.php';
 ?>
 
-<div class="container">
-    <h1>Form Pendaftaran</h1>
-    <form method="POST" action="main.php">
+<div class="container my-5">
+    <h3 class="text-center mb-4">Form Pendaftaran</h3>
+    <hr>
+    <form method="POST" action="main.php" autocomplete="off" class="my-4">
         <div class="form-group row">
             <label for="nama" class="col-4 col-form-label">Nama</label>
             <div class="col-8">
-                <input id="nama" name="nama" type="text" class="form-control">
+                <input id="nama" name="nama" type="text" class="form-control" autofocus>
             </div>
         </div>
         <div class="form-group row">
@@ -80,15 +81,17 @@ require_once 'header.php';
     </form>
 
     <hr>
-    <?php  // tampilkan data yang diterima
-    echo "<h2>Informasi yang Anda Kirim:</h2>";
-    echo "Nama: " . $nama . "<br>";
-    echo "Jenis Kelamin: " . $jk . "<br>";
-    echo "Hobi: ";
-    foreach ($hobi as $h) {
-        echo $h . ", ";
+    <?php
+    if (isset($_POST['submit'])) {
+        echo "<h5>Informasi yang Anda Kirim:</h5>";
+        echo "Nama: " . $nama . "<br>";
+        echo "Jenis Kelamin: " . $jk . "<br>";
+        echo "Hobi: ";
+        foreach ($hobi as $h) {
+            echo $h . ", ";
+        }
+        echo "<br> Status: " . $status . "<br>";
     }
-    echo "<br> Status: " . $status . "<br>";
     ?>
 
 </div>
