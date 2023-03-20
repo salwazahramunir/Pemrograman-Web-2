@@ -1,3 +1,12 @@
+<?php
+$choice_of_study_program = ["SI" => "Sistem Informasi", "TI" => "Teknik Informatika", "BD" => "Bisnis Digital"];
+$skills = [
+    "HTML" => 10, "CSS" => 10, "JavaScript" => 20, "RWD Bootstrap" => 20, "PHP" => 30,
+    "Pyhon" => 30, "Java" => 50
+];
+$choise_domicile = ["Jakarta", "Depok", "Bogor", "Tanggerang", "Bekasi", "Lainnya"];
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -21,14 +30,14 @@
             <div class="card-body p-5">
                 <h4 class="card-title">Form Registrasi IT Club Data Science</h4>
                 <hr>
-                <form method="POST" action="form_nilai.php">
+                <form method="POST" action="proses_registrasi.php" autocomplete="off">
                     <div class="form-group">
                         <label for="nim">NIM</label>
-                        <input type="text" class="form-control" id="nim">
+                        <input type="text" name="nim" class="form-control" id="nim" autofocus>
                     </div>
                     <div class="form-group">
                         <label for="nama_lengkap">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="nama_lengkap">
+                        <input type="text" name="nama" class="form-control" id="nama_lengkap">
                     </div>
                     <div class="form-group">
                         <label for="">Jenis Kelamin</label>
@@ -49,68 +58,37 @@
                         <label for="program_study">Program Study</label>
                         <select class="form-control" id="program_study" name="program_study">
                             <option disabled selected>--- Select One ---</option>
-                            <option value="Sistem Informasi">Sistem Informasi</option>
-                            <option value="Teknik Informatika">Teknik Informatika</option>
-                            <option value="Bisnis Digital">Bisnis Digital</option>
+                            <?php foreach ($choice_of_study_program as $kunci => $nilai) { ?>
+                                <option value="<?php echo $nilai ?>"><?= $nilai; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="skill">Skill Web & Programming</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="HTML" id="HTML">
-                            <label class="form-check-label" for="HTML">
-                                HTML
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="CSS" id="CSS">
-                            <label class="form-check-label" for="CSS">
-                                CSS
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="JavaScript" id="JavaScript">
-                            <label class="form-check-label" for="JavaScript">
-                                JavaScript
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="RWD Bootstrap" id="RWD Bootstrap">
-                            <label class="form-check-label" for="RWD Bootstrap">
-                                RWD Bootstrap
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="PHP" id="PHP">
-                            <label class="form-check-label" for="PHP">
-                                PHP
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Phyton" id="Phyton">
-                            <label class="form-check-label" for="Phyton">
-                                Phyton
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Java" id="Java">
-                            <label class="form-check-label" for="Java">
-                                Java
-                            </label>
-                        </div>
+                        <?php foreach ($skills as $kunci => $nilai) { ?>
+                            <div class="form-check">
+                                <input class="form-check-input" name="skills[]" type="checkbox" value="<?= $kunci ?>" id="<?= $kunci ?>">
+                                <label class="form-check-label" for="<?= $kunci ?>">
+                                    <?= $kunci  ?>
+                                </label>
+                            </div>
+                        <?php } ?>
                     </div>
                     <div class="form-group">
                         <label for="tempat_domisili">Tempat Domisili</label>
-                        <input type="text" class="form-control" id="tempat_domisili">
+                        <select class="form-control" id="domisili" name="domisili">
+                            <option disabled selected>--- Select One ---</option>
+                            <?php foreach ($choise_domicile as $kunci => $nilai) { ?>
+                                <option value="<?php $kunci ?>"><?= $nilai; ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" name="email" class="form-control" id="email">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="proses" class="btn btn-primary">Submit</button>
                 </form>
-
-
             </div>
             <div class="card-footer text-muted">
                 Develop by Salwa Az-Zahra Munir
