@@ -71,7 +71,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find($request->id);
+        $product->kode = $request->kode;
+        $product->nama = $request->nama;
+        $product->harga_jual = $request->harga_jual;
+        $product->harga_beli = $request->harga_beli;
+        $product->stok = $request->stok;
+        $product->min_stok = $request->min_stok;
+        $product->deskripsi = $request->deskripsi;
+        $product->kategori_produk_id = $request->kategori_produk_id;
+        $product->save();
+        return redirect('products');
     }
 
     /**
@@ -79,6 +89,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = product::find($id);
+        $product->delete();
+
+        return redirect('products')->with('success', 'Produk berhasil dihapus');
     }
 }

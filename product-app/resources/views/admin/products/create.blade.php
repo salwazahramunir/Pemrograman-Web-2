@@ -2,7 +2,8 @@
 @section('content')
     <h1 class="mt-4">Form Tambah Produk</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ url('products') }}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('products') }}">Products</a></li>
         <li class="breadcrumb-item active">Form Tambah Produk</li>
     </ol>
     <div class="card mb-4">

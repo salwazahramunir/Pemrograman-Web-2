@@ -2,11 +2,16 @@
 @section('content')
     <h1 class="mt-4">Daftar Produk</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ url('products') }}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
         <li class="breadcrumb-item active">Daftar Produk</li>
     </ol>
     <a href="{{ url('products/create') }}" class="btn btn-primary mb-4">Tambah Produk Baru</a>
     <div class="card mb-4">
+        @if (session('success'))
+                <div class="alert alert-success mb-3">
+                    {{ session('success') }}
+                </div>
+        @endif
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>
@@ -36,7 +41,10 @@
                             <td>{{ $p->min_stok }}</td>
                             <td>{{ $p->deskripsi }}</td>
                             <td>{{ $p->nama_kategori }}</td>
-                            <td><a href="{{ url('products/edit/' . $p->id) }}" class="btn btn-warning">Edit</a></td>
+                            <td>
+                                <a href="{{ url('products/edit/' . $p->id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ url('products/delete/' . $p->id) }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus produk?')">Delete</a>
+                            </td>
                         </tr>
                         @php $no++; @endphp
                     @endforeach
