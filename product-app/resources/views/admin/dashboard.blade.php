@@ -1,4 +1,4 @@
 @extends('admin.layout.index')
 @section('content')
-    <h1>Dashboard</h1>
+    <h1 class="mt-4">Dashboard</h1>
 @endsection
