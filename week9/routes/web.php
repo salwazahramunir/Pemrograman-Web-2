@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,17 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Buat route kabar dengan view kondisi
-Route::get('/kabar', function () {
-    return view('kondisi');
-});
+// Route form
+Route::get('/form', [FormController::class, 'index']);
+// Route hasil
+Route::post('/hasil', [FormController::class, 'hasil']);
 
-// Buat route nilai dengan view nilai
-Route::get('/nilai', function () {
-    return view('nilai');
-});
-
-// Buat route ke pasien dengan view pasien
-Route::get('/pasien', function () {
-    return view('pasien');
-});
+// Route form skill
+Route::get('/form-skills', [SkillController::class, 'index']);
+// Route hasil skill
+Route::post('/hasil-skills', [SkillController::class, 'hasil']);
