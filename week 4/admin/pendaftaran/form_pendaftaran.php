@@ -24,7 +24,7 @@ $choise_domicile = ["Jakarta", "Depok", "Bogor", "Tanggerang", "Bekasi", "Lainny
 <body>
     <div class="container my-5">
 
-        <form method="POST" action="pendaftaran/proses_registrasi.php" autocomplete="off">
+        <form method="POST" action="result_pendaftaran.php" autocomplete="off">
             <div class="form-group">
                 <label for="nim">NIM</label>
                 <input type="text" name="nim" class="form-control" id="nim" autofocus>
