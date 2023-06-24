@@ -1,15 +1,15 @@
 <?php
-$proses = $_POST["proses"];
-$cancel = $_POST["cancel"];
-$customer = $_POST["customer"];
-$produk = $_POST["produk"];
-$jumlah = $_POST["jumlah"];
+
 
 $check = false;
 $price = 0;
 $total = 0;
 
-if (isset($proses)) {
+if (isset($_POST["proses"])) {
+    $proses = $_POST["proses"];
+    $customer = $_POST["customer"];
+    $produk = $_POST["produk"];
+    $jumlah = $_POST["jumlah"];
     $check = true;
 
     switch ($produk) {
@@ -27,7 +27,7 @@ if (isset($proses)) {
     $total = $price * $jumlah;
 }
 
-if (isset($cancel)) {
+if (isset($_POST["cancel"])) {
     $check = false;
 }
 
